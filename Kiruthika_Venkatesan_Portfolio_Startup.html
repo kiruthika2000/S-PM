@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiruthika Venkatesan — Product Manager · AI · API Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf7;
+  --bg-card: #ffffff;
+  --bg-warm: #f4f0e8;
+  --ink: #0a0a0a;
+  --ink-soft: #3d3d3a;
+  --ink-muted: #8a8a85;
+  --accent: #635bff;
+  --accent-soft: #7a73ff;
+  --accent-bg: rgba(99, 91, 255, 0.06);
+  --warm-accent: #ff7a59;
+  --rule: rgba(10, 10, 10, 0.08);
+  --rule-strong: rgba(10, 10, 10, 0.18);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  font-weight: 400;
+  font-size: 16px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Soft gradient mesh */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(99, 91, 255, 0.06) 0%, transparent 35%),
+    radial-gradient(circle at 85% 60%, rgba(255, 122, 89, 0.04) 0%, transparent 45%);
+}
+
+::selection { background: var(--accent); color: white; }
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 56px;
+  position: relative;
+  z-index: 2;
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+.serif { font-family: 'Newsreader', serif; }
+
+/* ============ NAV ============ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 250, 247, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--warm-accent) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Newsreader', serif;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.nav-mark .subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-cta:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.nav-cta::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.nav-cta:hover::after {
+  transform: translateX(3px);
+}
+
+/* ============ HERO ============ */
+.hero {
+  padding: 120px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 48px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.hero-status .dot {
+  width: 7px;
+  height: 7px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); }
+  50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.08); }
+}
+
+.hero h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(56px, 8.5vw, 132px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin-bottom: 40px;
+  color: var(--ink);
+  max-width: 1100px;
+}
+
+.hero h1 .serif-italic {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+}
+
+.hero h1 .underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hero h1 .underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.05em;
+  width: 100%;
+  height: 0.08em;
+  background: var(--warm-accent);
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.hero-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 400;
+  line-height: 1.55;
+  max-width: 740px;
+  margin-bottom: 56px;
+  color: var(--ink-soft);
+  letter-spacing: -0.005em;
+}
+
+.hero-tagline .highlight {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 96px;
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.cta-primary:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 91, 255, 0.25);
+}
+
+.cta-primary::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.cta-primary:hover::after {
+  transform: translateX(4px);
+}
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule-strong);
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.hero-stat {
+  padding: 32px 28px;
+  border-right: 1px solid var(--rule);
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.hero-stat:hover {
+  background: var(--accent-bg);
+}
+
+.hero-stat:last-child { border-right: none; }
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+
+.stat-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.stat-number .unit {
+  font-size: 22px;
+  color: var(--accent);
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.stat-detail {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ============ SECTION ============ */
+.section {
+  padding: 120px 0;
+  position: relative;
+}
+
+.section + .section {
+  border-top: 1px solid var(--rule);
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 12px 5px 10px;
+  background: var(--accent-bg);
+  border: 1px solid rgba(99, 91, 255, 0.15);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.section-eyebrow .dot {
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.section h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  max-width: 880px;
+  color: var(--ink);
+  margin-bottom: 64px;
+}
+
+.section h2 .italic {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* ============ ABOUT ============ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+
+.about-prose {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.about-prose p { margin-bottom: 24px; }
+.about-prose p:first-child {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 36px;
+  letter-spacing: -0.015em;
+}
+
+.about-prose strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.about-prose em {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+  font-size: 1.08em;
+}
+
+.about-prose code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.86em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.about-meta {
+  position: sticky;
+  top: 96px;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.about-meta-row {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.about-meta-row:last-child { border-bottom: none; }
+
+.about-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+.about-meta-value {
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.about-meta-value .pill {
+  display: inline-block;
+  padding: 2px 9px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  margin: 2px 4px 2px 0;
+}
+
+/* ============ CASE STUDIES ============ */
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.case-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: 48px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.case-card:hover {
+  border-color: rgba(99, 91, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(10, 10, 10, 0.06);
+}
+
+.case-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.case-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.case-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 100px;
+}
+
+.case-duration {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-left: auto;
+}
+
+.case-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  color: var(--ink);
+  max-width: 900px;
+}
+
+.case-card h3 .italic {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.case-summary {
+  font-family: 'Newsreader', serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 48px;
+  font-style: italic;
+  max-width: 900px;
+}
+
+.case-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.case-section h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.case-section h4::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.case-section p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.case-section p code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.86em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.case-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 28px;
+  background: var(--bg-warm);
+  border-radius: 12px;
+}
+
+.case-result-item .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.case-result-item .value {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.case-result-item .value .accent {
+  color: var(--accent);
+}
+
+.case-result-item .detail {
+  font-size: 12px;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+
+/* ============ APPROACH ============ */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.method-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  padding: 32px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.method-item:hover {
+  border-color: rgba(99, 91, 255, 0.2);
+  background: var(--bg-card);
+  transform: translateY(-2px);
+}
+
+.method-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.method-content h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.method-content h4 .italic {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.method-content p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+/* ============ CONTACT ============ */
+.contact {
+  padding: 140px 0 120px;
+  text-align: center;
+}
+
+.contact h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(48px, 7vw, 104px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  margin-bottom: 32px;
+  color: var(--ink);
+  text-align: center;
+  max-width: none;
+}
+
+.contact h2 .italic {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.contact-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 19px;
+  color: var(--ink-soft);
+  max-width: 580px;
+  margin: 0 auto 56px;
+  line-height: 1.55;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.contact-btn .icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.contact-btn:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 91, 255, 0.15);
+}
+
+.contact-btn:hover .icon {
+  background: var(--accent);
+  color: white;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero-tagline, .hero-status, .hero-cta-row, .hero-stats {
+  animation: fadeUp 1s ease-out backwards;
+}
+
+.hero-status { animation-delay: 0.05s; }
+.hero h1 { animation-delay: 0.15s; }
+.hero-tagline { animation-delay: 0.4s; }
+.hero-cta-row { animation-delay: 0.55s; }
+.hero-stats { animation-delay: 0.7s; }
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+[data-reveal].in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .container, nav { padding-left: 40px; padding-right: 40px; }
+  .nav-links { gap: 20px; font-size: 13px; }
+  .hero { padding: 80px 0 72px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .hero-stat:nth-child(2) { border-right: none; }
+  .hero-stat:nth-child(1), .hero-stat:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-meta { position: static; }
+  .case-content { grid-template-columns: 1fr; gap: 32px; }
+  .case-results { grid-template-columns: 1fr; }
+  .case-card { padding: 36px 28px; }
+  .method-grid { grid-template-columns: 1fr; }
+  .section { padding: 80px 0; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .container { padding-left: 24px; padding-right: 24px; }
+  .hero { padding: 56px 0 56px; }
+  .hero-stats { grid-template-columns: 1fr; }
+  .hero-stat { border-right: none !important; border-bottom: 1px solid var(--rule); }
+  .hero-stat:last-child { border-bottom: none; }
+  .case-card { padding: 28px 20px; }
+  .case-card-header { gap: 10px; }
+  .case-duration { margin-left: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark">
+    <div class="nav-avatar">K</div>
+    <div>
+      <div>Kiruthika Venkatesan</div>
+      <div class="subtitle">PM · AI · API Products</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#approach">Approach</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-status">
+      <span class="dot"></span>
+      <span>Open to PM roles · AI + API products + early-stage</span>
+    </div>
+
+    <h1>
+      Building products<br>
+      that help <span class="serif-italic">founders</span><br>
+      <span class="underline">do their best work.</span>
+    </h1>
+
+    <p class="hero-tagline">
+      Product Manager with <span class="highlight">6+ years</span> shipping user-facing and API products on complex technical systems at scale. AI enthusiast and experimenter. I care about the messy 20% of product surface that earns customer trust.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="#work" class="cta-primary">See selected work</a>
+      <a href="mailto:kiruthikavenkat2704@gmail.com" class="cta-secondary">Email me</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-label">Outcomes shipped</div>
+        <div class="stat-number">$19.8<span class="unit">M</span></div>
+        <div class="stat-detail">Across payments, AI/ML, & platform products</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-label">User-facing & API products</div>
+        <div class="stat-number">14<span class="unit">+</span></div>
+        <div class="stat-detail">Reusable platform services in production</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-label">AI workflows shipped</div>
+        <div class="stat-number">20<span class="unit">+</span></div>
+        <div class="stat-detail">LLM-powered features in customer hands</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-label">On-time launches</div>
+        <div class="stat-number">4 / 4</div>
+        <div class="stat-detail">Consecutive on-time product releases</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dot"></span>
+      <span>01 / About</span>
+    </div>
+    <h2>I build for founders the way <span class="italic">I'd want to be built for</span> — with rigor, taste, and the patience to get the edges right.</h2>
+
+    <div class="about-grid">
+      <div class="about-prose">
+        <p>I'm a Product Manager with 6+ years shipping user-facing and API products on systems that run at scale. The work I care about most is the work that happens at the intersection of <em>technical depth</em> and <em>customer empathy</em> — where a clean abstraction in the right place can save a founder six weeks of work, and a missing one can quietly cost them a customer.</p>
+
+        <p>I cut my teeth on <strong>API platform infrastructure at a top-5 US bank</strong> — building the kind of internal platforms other product teams trust to run their products on. Idempotency, exception handling, distributed-systems trade-offs. I work as a peer to engineers on these conversations, not a translator.</p>
+
+        <p>I'm an <strong>AI enthusiast and experimenter</strong>. I've upended my own PRD-drafting, discovery, and customer-feedback workflows using <code>Claude</code>, <code>GPT-4</code>, and <code>Gemini</code> — and I bring that same instinct for "what if this could be 2x better" to product itself. The agentic-automation work I've shipped in production isn't a side hobby; it's where my craft is sharpest right now.</p>
+
+        <p>What I want to build next: products that <strong>help founders get to product-market fit faster</strong>. Stripe Atlas-style infrastructure. AI tooling that removes the 80% of busywork between an idea and a shipped product. Platforms that founders trust because the edges are taken care of.</p>
+      </div>
+
+      <aside class="about-meta">
+        <div class="about-meta-row">
+          <div class="about-meta-label">role</div>
+          <div class="about-meta-value">Product Manager</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-label">focus</div>
+          <div class="about-meta-value">
+            <span class="pill">AI Products</span>
+            <span class="pill">API Platforms</span>
+            <span class="pill">Fintech</span>
+            <span class="pill">Early-Stage</span>
+          </div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-label">stack</div>
+          <div class="about-meta-value">Claude · GPT-4 · Gemini · AWS (Lambda, EventBridge, API Gateway) · SQL · Python · Figma · Jira</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-label">edu</div>
+          <div class="about-meta-value">MS Information Technology — University of Denver · 3.97/4.0<br>BE Computer Science — Anna University · 3.8/4.0</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-label">certs</div>
+          <div class="about-meta-value">AWS AI Practitioner · AWS Cloud Practitioner · Azure AI-900 · CSPO</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-label">based</div>
+          <div class="about-meta-value">San Francisco, CA · open to relocation</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dot"></span>
+      <span>02 / Selected work</span>
+    </div>
+    <h2>Three case studies. <span class="italic">One operating system.</span></h2>
+
+    <div class="case-grid">
+
+      <!-- CASE 1 -->
+      <article class="case-card" data-reveal>
+        <div class="case-card-header">
+          <span class="case-num">CASE_01</span>
+          <span class="case-tag">AI Agent Platform</span>
+          <span class="case-duration">14 months · Lead PM</span>
+        </div>
+        <h3>An AI agent platform that <span class="italic">other teams trust</span> to run their products on.</h3>
+        <p class="case-summary">Enterprise customers were drowning in high-volume, judgment-intensive tasks: document classification, exception triage, support routing. We built the platform that automated 84% of that load.</p>
+
+        <div class="case-content">
+          <div class="case-section">
+            <h4>The problem</h4>
+            <p>Twelve enterprise customers had the same pain shape — too many decisions, not enough humans. Engineering wanted to ship something fast; customer-success wanted something <code>reliable</code>; founders wanted something they could trust to run unattended. The hard part wasn't picking a model. It was building the platform around it: prompt versioning, evaluation harnesses, retrieval-augmented generation, fallback flows, and the kind of observability that lets you ship without crossing your fingers.</p>
+          </div>
+          <div class="case-section">
+            <h4>My approach</h4>
+            <p>I shipped user-facing and API products on the same stack — same evaluation harness, same logging, same idempotency contracts. Deeply understood user needs through 40+ founder-style discovery interviews. Drove product development by setting the pace, prioritizing ruthlessly, and unblocking execution. The platform serves both internal teams who consume the API and end-users who see the agent's output — and I designed surprisingly great details into both.</p>
+          </div>
+        </div>
+
+        <div class="case-results">
+          <div class="case-result-item">
+            <div class="label">Task completion</div>
+            <div class="value">+<span class="accent">84%</span></div>
+            <div class="detail">Across 4 product categories</div>
+          </div>
+          <div class="case-result-item">
+            <div class="label">Time per task</div>
+            <div class="value">−<span class="accent">62%</span></div>
+            <div class="detail">Faster customer outcomes</div>
+          </div>
+          <div class="case-result-item">
+            <div class="label">Annual savings</div>
+            <div class="value">$<span class="accent">9.6M</span></div>
+            <div class="detail">Projected at run-rate</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 2 -->
+      <article class="case-card" data-reveal>
+        <div class="case-card-header">
+          <span class="case-num">CASE_02</span>
+          <span class="case-tag">Payments Infrastructure</span>
+          <span class="case-duration">14 months · Lead PM</span>
+        </div>
+        <h3>Cutting a payment error rate <span class="italic">from 12% to 1.4%</span>.</h3>
+        <p class="case-summary">A top-5 US bank's commission-payout engine was producing 12% error rates — quietly costing $2M+ a quarter in reconciliation work and eroding agent trust.</p>
+
+        <div class="case-content">
+          <div class="case-section">
+            <h4>The problem</h4>
+            <p>Six teams, one rule engine, no shared source of truth. Payment logic lived across three systems with subtle inconsistencies. Each month-end produced a backlog of disputes, reconciliations, and one-off corrections. Engineering wanted a rewrite; Operations wanted stability; Finance wanted the errors to stop yesterday. My job: design a path through that respected all three, without breaking <code>idempotency</code>, audit trails, or settlement timing.</p>
+          </div>
+          <div class="case-section">
+            <h4>My approach</h4>
+            <p>Four-week discovery. Shadowed 12 commission analysts. Mapped rule logic across all three systems. Sequenced the program into three releases: stabilize disputed rules first, migrate to a single event-driven engine second, deprecate legacy paths last. Partnered with engineering on the architecture: AWS API Gateway as the edge, Lambda for rule evaluation, EventBridge for state transitions, SQS for retries with idempotency keys.</p>
+          </div>
+        </div>
+
+        <div class="case-results">
+          <div class="case-result-item">
+            <div class="label">Error rate</div>
+            <div class="value"><span class="accent">12% → 1.4%</span></div>
+            <div class="detail">Post-migration</div>
+          </div>
+          <div class="case-result-item">
+            <div class="label">Adoption lift</div>
+            <div class="value">+<span class="accent">84%</span></div>
+            <div class="detail">Across 6 internal teams</div>
+          </div>
+          <div class="case-result-item">
+            <div class="label">Annual savings</div>
+            <div class="value">$<span class="accent">9.6M</span></div>
+            <div class="detail">Projected</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 3 -->
+      <article class="case-card" data-reveal>
+        <div class="case-card-header">
+          <span class="case-num">CASE_03</span>
+          <span class="case-tag">Regulated · Audit-Visible</span>
+          <span class="case-duration">7 months · Lead PM</span>
+        </div>
+        <h3>Standing up a platform with <span class="italic">zero audit findings</span>.</h3>
+        <p class="case-summary">A new fraud-decisioning platform at FINRA spanning 6 business lines, with audit visibility from week one and 12 customer-driven initiatives to ship simultaneously.</p>
+
+        <div class="case-content">
+          <div class="case-section">
+            <h4>The problem</h4>
+            <p>New initiative, no historical baseline, audit visibility from day one. Six business lines with conflicting priorities. The path forward wasn't unclear because the work was hard — it was unclear because too many stakeholders were being polite about what they actually needed. Fraud-decisioning at scale lives or dies on signal quality, and nobody had written down what "signal" meant for this product.</p>
+          </div>
+          <div class="case-section">
+            <h4>My approach</h4>
+            <p>Synthesis sprint: 40+ user interviews, 4 surveys, 8 working sessions. Forced trade-offs by sequencing initiatives against a single weighted scoring model. Authored a 12-month roadmap and validated it line-by-line with each business-line lead. Built a risk register with named owners and weekly review cadence. Threat-modeled the AI risk-scoring system itself — adversarial inputs, model evasion, false-positive cost to legitimate users.</p>
+          </div>
+        </div>
+
+        <div class="case-results">
+          <div class="case-result-item">
+            <div class="label">Business value</div>
+            <div class="value">$<span class="accent">4.2M</span></div>
+            <div class="detail">Across 12 initiatives</div>
+          </div>
+          <div class="case-result-item">
+            <div class="label">Platform adoption</div>
+            <div class="value">62% → <span class="accent">89%</span></div>
+            <div class="detail">Across 4 categories</div>
+          </div>
+          <div class="case-result-item">
+            <div class="label">Audit findings</div>
+            <div class="value"><span class="accent">Zero</span></div>
+            <div class="detail">External audit clean</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROACH ============ -->
+<section class="section" id="approach">
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dot"></span>
+      <span>03 / How I work</span>
+    </div>
+    <h2>Six things I've learned <span class="italic">building for builders</span>.</h2>
+
+    <div class="method-grid">
+      <div class="method-item">
+        <div class="method-icon">i.</div>
+        <div class="method-content">
+          <h4>The boring parts <span class="italic">are the product</span></h4>
+          <p>Onboarding flows. Empty states. Error messages. The bits founders see when something goes wrong. I obsess over these because every "surprisingly great detail" lives in there.</p>
+        </div>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">ii.</div>
+        <div class="method-content">
+          <h4>Be a peer to engineering</h4>
+          <p>If I can't reason about distributed systems, idempotency, and exception handling in the same room as the engineers, I'm not actually doing technical PM work. I keep my technical depth sharp as a deliberate practice.</p>
+        </div>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">iii.</div>
+        <div class="method-content">
+          <h4>2x better, not 10% better</h4>
+          <p>The AI enthusiast in me is allergic to incrementalism. If a new tool, model, or workflow doesn't promise a 2x improvement, I'm probably not going to upend my routine for it. The corollary: when something is 2x better, I switch immediately.</p>
+        </div>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">iv.</div>
+        <div class="method-content">
+          <h4>Set the pace. <span class="italic">Then keep it</span></h4>
+          <p>I drive product development by setting the pace, prioritizing ruthlessly, and unblocking execution. The team's velocity is my responsibility, not just the roadmap.</p>
+        </div>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">v.</div>
+        <div class="method-content">
+          <h4>Whatever it takes</h4>
+          <p>Persistent operator. If the team needs me to write the docs, talk to support, debug a customer escalation at 9pm, or open a Notion page and start typing the strategy — that's what I do. Job titles are descriptions, not boundaries.</p>
+        </div>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">vi.</div>
+        <div class="method-content">
+          <h4>Measure user impact, <span class="italic">precisely</span></h4>
+          <p>I'm adept with data and skeptical of metrics that don't tie back to a real user behavior. The KPI I trust most is the one a customer would describe in their own words.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <h2>Let's build<br>something <span class="italic">founders love</span>.</h2>
+    <p class="contact-tagline">Open to Senior PM and Technical PM roles in AI products, API platforms, fintech infrastructure, and early-stage builder tools.</p>
+
+    <div class="contact-buttons">
+      <a href="mailto:kiruthikavenkat2704@gmail.com" class="contact-btn">
+        <span class="icon">@</span>
+        <span>kiruthikavenkat2704@gmail.com</span>
+      </a>
+      <a href="tel:+17208135590" class="contact-btn">
+        <span class="icon">↗</span>
+        <span>(+1) 720-813-5590</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+const reveals = document.querySelectorAll('[data-reveal]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
